@@ -8,6 +8,7 @@ namespace PizzeriaApp
     public partial class App : Application
     {
         public static User CurrentUser { get; set; } = null;
+        public static string Token{ get; set; } = string.Empty;
         public App()
         {
 

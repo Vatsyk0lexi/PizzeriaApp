@@ -3,10 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PizzeriaApp.UserPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Settings"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical" Margin="0,200,0,0">
+            <Frame IsClippedToBounds="True" HasShadow="True" Padding="0" BackgroundColor="White" >
+                <Frame.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" Android="10"/>
+                </Frame.Margin>
+                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                    <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" Padding="0"  >
+                        <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Padding="0" Margin="0,0,0,0"  BackgroundColor="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Row="0" Grid.Column="1" Padding="0"  Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="Card Title" TextColor="#222" FontSize = "25" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text=" badge" FontSize = "16" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{}" FontSize = "16"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Author :" FontSize = "14" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text="Author Name" FontSize = "14"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

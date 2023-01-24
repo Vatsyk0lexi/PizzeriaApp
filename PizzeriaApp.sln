@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaApp.Android", "Pizz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaApp", "PizzeriaApp\PizzeriaApp\PizzeriaApp.csproj", "{E376F1F0-B5C7-4BE9-B6E0-FA98C1C3F17A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "D:\PizzeriaApplication\Pizzeria\Server\Server.csproj", "{F6C5B9A8-116F-426B-A30F-738DB2C36906}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,10 +25,6 @@ Global
 		{E376F1F0-B5C7-4BE9-B6E0-FA98C1C3F17A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E376F1F0-B5C7-4BE9-B6E0-FA98C1C3F17A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E376F1F0-B5C7-4BE9-B6E0-FA98C1C3F17A}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{F6C5B9A8-116F-426B-A30F-738DB2C36906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6C5B9A8-116F-426B-A30F-738DB2C36906}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6C5B9A8-116F-426B-A30F-738DB2C36906}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6C5B9A8-116F-426B-A30F-738DB2C36906}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

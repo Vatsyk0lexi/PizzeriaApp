@@ -10,6 +10,17 @@ namespace PizzeriaApp.ViewModel
     public class RegisterViewModel : BaseViewModel
     {
         private ApiService _ApiService = new ApiService();
+        private INavigation navigation;
+
+        public RegisterViewModel()
+        {
+
+        }
+        public RegisterViewModel(INavigation Navigation)
+        {
+            navigation= Navigation;
+        }
+
         public string Username { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string NumberPhone { get; set; } = string.Empty;
@@ -25,13 +36,35 @@ namespace PizzeriaApp.ViewModel
                     if (isSuccess)
                     {
                         Message = "Ви успішно зареєструвались";
+                        await navigation.PushAsync(new LoginPage(Message),true);
                     }
                     else
                     {
                         Message = "Виникла помилка при  реєстрації";
+                        await navigation.PushAsync(new RegisterPage(Message), true);
                     }
                 });
             }
         }
+        public ICommand Login
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    bool isSuccess = await _ApiService.LoginAsync(Email, Password);
+                    if (isSuccess)
+                    {
+                        await navigation.PushAsync(new TabbedPage1(), true);
+                    }
+                    else
+                    {
+                        Message = "Виникла помилка при  авторизації";
+                        await navigation.PushAsync(new LoginPage(Message), true);
+                    }
+                });
+            }
+        }
+
     }
 }

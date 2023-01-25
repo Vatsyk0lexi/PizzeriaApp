@@ -12,9 +12,13 @@ namespace PizzeriaApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TabbedPage1 : TabbedPage
     {
-        public TabbedPage1()
+        public TabbedPage1(string message = "")
         {
             InitializeComponent();
+            if (message.Length > 0)
+            {
+                DisplayAlert("Повідомлення!", $"{message}", "Ok");
+            }
         }
     }
 }

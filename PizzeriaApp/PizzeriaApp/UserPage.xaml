@@ -3,38 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PizzeriaApp.UserPage">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Margin="0,200,0,0">
-            <Frame IsClippedToBounds="True" HasShadow="True" Padding="0" BackgroundColor="White" >
-                <Frame.Margin>
-                    <OnPlatform x:TypeArguments="Thickness" Android="10"/>
-                </Frame.Margin>
-                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                    <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" Padding="0"  >
-                        <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Padding="0" Margin="0,0,0,0"  BackgroundColor="Transparent">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Row="0" Grid.Column="1" Padding="0"  Orientation="Vertical" VerticalOptions="CenterAndExpand">
-                                <StackLayout Orientation="Horizontal" >
-                                    <Label Text="Card Title" TextColor="#222" FontSize = "25" VerticalOptions="CenterAndExpand"/>
-                                    <Label Text=" badge" FontSize = "16" VerticalOptions="CenterAndExpand"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{}" FontSize = "16"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Author :" FontSize = "14" VerticalOptions="CenterAndExpand"/>
-                                    <Label Text="Author Name" FontSize = "14"/>
-                                </StackLayout>
-                            </StackLayout>
-                        </Grid>
-                    </Frame>
+       
+        
+        <StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="20">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <BoxView Grid.RowSpan="12" HorizontalOptions="FillAndExpand">
+                    <BoxView.Background>
+                        <LinearGradientBrush>
+                            <GradientStopCollection>
+                                <GradientStop Color="#161616" Offset="0"/>
+                                <GradientStop Color="#30343F" Offset="1"/>
+                            </GradientStopCollection>
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
+
+
+                <Label Grid.Row="1"  Text="Налаштування" Margin="0,30,0,0" FontSize="24" FontAttributes="Bold" TextColor="White" HorizontalOptions="CenterAndExpand"></Label>
+                <StackLayout Grid.Row="2" Spacing="30" Margin="0,30,0,0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label  Text="EMAIL:"  Background="white" TextColor="black" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Label>
+                        <Label  x:Name="Email"    TextColor="White" Margin="20,0,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label  Text="Ім'я користувача" Background="white" TextColor="black"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" ></Label>
+                        <Entry  x:Name="UserName" TextColor="White"  HorizontalOptions="StartAndExpand" Margin="20,0,0,0" VerticalOptions="CenterAndExpand" ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label  Text="Пароль" Background="white" TextColor="black" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Label>
+                        <Entry x:Name="Password"   TextColor="White" IsPassword="True" Margin="20,0,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label  Text="Номер телефону"  Background="white" TextColor="black" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Label>
+                        <Entry x:Name="NumberPhone"   Keyboard="Telephone"  Margin="20,0,0,0" TextColor="White"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" ></Entry>
+                    </StackLayout>
+
+                    <Button  Text="Зберегти" x:Name="SaveButton"  TextColor="Black" BackgroundColor="White" CornerRadius="20"></Button>
+                    <Button  Text="Вийти з акаунту" x:Name="LogOut" HorizontalOptions="CenterAndExpand" WidthRequest="150" HeightRequest="50" TextColor="OrangeRed" BackgroundColor="White" CornerRadius="20"></Button>
                 </StackLayout>
-            </Frame>
+
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

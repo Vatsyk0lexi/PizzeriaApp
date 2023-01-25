@@ -1,7 +1,10 @@
 ﻿using PizzeriaApp.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -18,7 +21,7 @@ namespace PizzeriaApp.ViewModel
         }
         public RegisterViewModel(INavigation Navigation)
         {
-            navigation= Navigation;
+            navigation = Navigation;
         }
 
         public string Username { get; set; } = string.Empty;
@@ -36,7 +39,7 @@ namespace PizzeriaApp.ViewModel
                     if (isSuccess)
                     {
                         Message = "Ви успішно зареєструвались";
-                        await navigation.PushAsync(new LoginPage(Message),true);
+                        await navigation.PushAsync(new LoginPage(Message), true);
                     }
                     else
                     {
@@ -55,7 +58,9 @@ namespace PizzeriaApp.ViewModel
                     bool isSuccess = await _ApiService.LoginAsync(Email, Password);
                     if (isSuccess)
                     {
-                        await navigation.PushAsync(new TabbedPage1(), true);
+                        
+                        var tab = new TabbedPage1();
+                        await navigation.PushAsync(tab);
                     }
                     else
                     {
@@ -65,6 +70,6 @@ namespace PizzeriaApp.ViewModel
                 });
             }
         }
-
     }
 }
+

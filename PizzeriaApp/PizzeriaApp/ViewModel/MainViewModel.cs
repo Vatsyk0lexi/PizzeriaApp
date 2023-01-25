@@ -19,7 +19,7 @@ namespace PizzeriaApp.ViewModel
             {
                 var tab = new TabbedPage1();
                 tab.CurrentPage = tab.Children[1];
-                Application.Current.MainPage.Navigation.PushModalAsync(tab);
+                Application.Current.MainPage.Navigation.PushAsync(tab);
             });
         }
 

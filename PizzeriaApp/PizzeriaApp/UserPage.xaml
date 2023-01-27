@@ -45,11 +45,11 @@
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label  Text="Пароль" Background="white" TextColor="black" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Label>
-                        <Entry x:Name="Password"   TextColor="White" IsPassword="True" Margin="20,0,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" ></Entry>
+                        <Entry  x:Name="Password"   TextColor="White" IsPassword="True" Margin="20,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ></Entry>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label  Text="Номер телефону"  Background="white" TextColor="black" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Label>
-                        <Entry x:Name="NumberPhone"   Keyboard="Telephone"  Margin="20,0,0,0" TextColor="White"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" ></Entry>
+                        <Editor x:Name="NumberPhone" AutoSize="TextChanges"  Keyboard="Telephone"  Margin="20,0,0,0" TextColor="White"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" ></Editor>
                     </StackLayout>
 
                     <Button  Text="Зберегти" x:Name="SaveButton"  TextColor="Black" BackgroundColor="White" CornerRadius="20"></Button>

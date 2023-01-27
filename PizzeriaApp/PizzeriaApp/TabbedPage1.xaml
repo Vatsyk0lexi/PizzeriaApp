@@ -11,7 +11,7 @@
             android:TabbedPage.ToolbarPlacement="Bottom">
 
     <local:MainPage  Title="Головна" IconImageSource="home.png"></local:MainPage>
-    <local:OrderPage  Title="Продукти" IconImageSource="order.png" ></local:OrderPage>
+    <local:ProductPage  Title="Продукти" IconImageSource="order.png" ></local:ProductPage>
     <local:UserPage Title="Налаштування" IconImageSource="settings.png"></local:UserPage>
 
 </TabbedPage>

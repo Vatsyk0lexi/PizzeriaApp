@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:PizzeriaApp.ViewModel"
+             x:Class="PizzeriaApp.ProductPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.TabBarIsVisible="True">
+
+
+
+    <RefreshView x:DataType="vm:ProductViewModel" Command="{Binding LoadProductsCommand}"
+                     IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+        <Grid RowDefinitions="130, *">
+            <BoxView Grid.RowSpan="2">
+                <BoxView.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Color="#161616" Offset="0"/>
+                            <GradientStop Color="#30343F" Offset="1"/>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <Grid>
+                <Path Data="M0,0H375V129.651s-9.025,2.382-55.426-5.3-70.141-41.09-130.3-41.176-83.544,33.5-130.893,41.176S0,129.651,0,129.651Z"
+                  Aspect="Fill" Fill="#FFBE00"/>
+                <StackLayout Orientation="Horizontal" Margin="25" Spacing="20" VerticalOptions="Start">
+                    <ImageButton x:Name="ImageMainButton" Source="back.png" BackgroundColor="Transparent" WidthRequest="20" HeightRequest="20" 
+                    HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Label Text="Головна" TextColor="Black" FontSize="20" FontAttributes="Bold" VerticalOptions="Start"/>
+                </StackLayout>
+                <StackLayout Margin="0,15,0,0" HorizontalOptions="End">
+                    <Button Text="Додати" Clicked="AddProductButton_Clicked" WidthRequest="150"></Button>
+                </StackLayout>
+
+            </Grid>
+            <CarouselView Grid.Row="1" ItemsSource="{Binding Products}" PeekAreaInsets="80" Margin="0,-20,0,20"
+                      >
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid  HorizontalOptions="Center" x:DataType="vm:Product">
+                            <Grid RowDefinitions="*,*,*" WidthRequest="200" HorizontalOptions="Center" Margin="0,30">
+                                <BoxView Grid.RowSpan="3" BackgroundColor="#A5A5A5" CornerRadius="35"/>
+
+                                <StackLayout Grid.Row="1" Padding="0" VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" TextColor="Black" FontSize="23" FontAttributes="Bold"
+                                        HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding Description}" TextColor="Black" FontSize="18"
+                                        HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding Price}" x:Name="PriceLabel" TextColor="Black" FontSize="20" FontAttributes="Bold"
+                                         HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Grid.Row="2" Margin="0,0,0,0" VerticalOptions="End">
+                                    <Image Source="delete.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProductViewModel}}, 
+                                            Path=ProductTapDelete}" CommandParameter="{Binding .}">
+
+                                            </TapGestureRecognizer>
+
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Button Text="В корзину" TextColor="White" BackgroundColor="#FFBE00" 
+                                        CornerRadius="20" HorizontalOptions="CenterAndExpand"/>
+                                    <Image Source="edit.png" x:Name="Edit" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProductViewModel}}, 
+                                            Path=ProductTapEdit}" CommandParameter="{Binding .}">
+
+                                            </TapGestureRecognizer>
+
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </Grid>
+                            <Grid HeightRequest="150" WidthRequest="150" VerticalOptions="Start" HorizontalOptions="Center">
+                                <Ellipse Stroke="White" StrokeThickness="3" Aspect="Fill"/>
+                                <Image  x:Name="MenuImg" Source="{Binding ImageUrl}" HeightRequest="165" WidthRequest="165" HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </Grid>
+        
+    </RefreshView>
+</ContentPage>

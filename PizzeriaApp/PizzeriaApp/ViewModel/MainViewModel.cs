@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -12,9 +13,10 @@ namespace PizzeriaApp.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        public List<Product> Products { get; set; }
         public MainViewModel()
         {
-            Picks = GetPicks();
+            Products =  GetPopularProducts();
             GetProductsCommand = new Command(() =>
             {
                 var tab = new TabbedPage1();
@@ -23,28 +25,16 @@ namespace PizzeriaApp.ViewModel
             });
         }
 
-        public List<Pick> Picks { get; set; }
-
-        public ICommand GetProductsCommand { get; }
-
-        private List<Pick> GetPicks()
+        private  List<Product> GetPopularProducts()
         {
-            return new List<Pick>
+            return new List<Product>()
             {
-                new Pick { Title = "Breakfast", Image = "IMG01.png",
-                    Description = "Order our healthy and warm breakfast menu for a great morning" },
-                new Pick { Title = "Lunch", Image = "IMG03.png",
-                    Description = "Delicious lunch to keep your day sweet and smooth" }
+                new Product(){ImageUrl="pepperoni", Description="Lorem ipsun",Name="Пепероні" },
+                 new Product(){ImageUrl="https://goodsushi.if.ua/image/cache/webp/catalog/photo/%D0%9F%D1%96%D1%86%D0%B0/%D0%A1%D0%B0%D0%BB%D1%8F%D0%BC%D1%96%D0%BD%D0%BE_Site-700x700.webp", Description="Опис",Name="Салямі" },
             };
         }
-    }
 
-    public class Pick
-    {
-        public string Title { get; set; }
-        public string Image { get; set; }
-        public string Description { get; set; }
-        public string Price { get; set; }
+        public ICommand GetProductsCommand { get; }
     }
 
 

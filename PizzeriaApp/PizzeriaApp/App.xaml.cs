@@ -2,6 +2,7 @@
 using PizzeriaApp.Services;
 using PizzeriaApp.ViewModel;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,6 +11,7 @@ namespace PizzeriaApp
 {
     public partial class App : Application
     {
+        public static List<Product> Products { get; set; } = new List<Product>();
         private static DataBase _dataBase;
         public static DataBase DataBase
         {

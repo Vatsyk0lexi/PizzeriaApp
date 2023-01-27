@@ -12,23 +12,25 @@ namespace PizzeriaApp.Services
 {
     public class ApiService
     {
-        public string Url { get; set; } = "http://192.168.1.70:16161/api/Auth/";
+        public string Url { get; set; } = "http://192.168.1.61:16161/api/Auth/";
         public async Task<bool> RegisterAsync(string email, string password, string username, string numberPhone)
         {
-            var client = new HttpClient();
-            RegisterViewModel user = new RegisterViewModel()
+            using (var client = new HttpClient())
             {
-                Username = username,
-                Password = password,
-                Email = email,
-                NumberPhone = numberPhone
-            };
-            var json = JsonConvert.SerializeObject(user);
-            HttpContent httpContent = new StringContent(json);
-            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var responce = await client.PostAsync(Url + "register", httpContent);
+                RegisterViewModel user = new RegisterViewModel()
+                {
+                    Username = username,
+                    Password = password,
+                    Email = email,
+                    NumberPhone = numberPhone
+                };
+                var json = JsonConvert.SerializeObject(user);
+                HttpContent httpContent = new StringContent(json);
+                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var responce = await client.PostAsync(Url + "register", httpContent);
 
-            return responce.IsSuccessStatusCode;
+                return responce.IsSuccessStatusCode;
+            }
         }
 
         public async Task<bool> LoginAsync(string email, string password)
@@ -44,22 +46,24 @@ namespace PizzeriaApp.Services
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var request = new HttpRequestMessage(HttpMethod.Post, Url + "login");
             request.Content = httpContent;
-
-            var client = new HttpClient();
-            var responce = await client.SendAsync(request);
-            if (responce.IsSuccessStatusCode)
+            using (var client = new HttpClient())
             {
-               
-                App.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
-                string token = await responce.Content.ReadAsStringAsync();
-                App .Current.Properties["Token"] = token;
-                App.Token = token;
 
-                var CurrentUser = await GetUserAsync(token);
-                App.Current.Properties["UserDetails"] = JsonConvert.SerializeObject(CurrentUser);
-                App.CurrentUser = CurrentUser;
+                var responce = await client.SendAsync(request);
+                if (responce.IsSuccessStatusCode)
+                {
+
+                    App.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
+                    string token = await responce.Content.ReadAsStringAsync();
+                    App.Current.Properties["Token"] = token;
+                    App.Token = token;
+
+                    var CurrentUser = await GetUserAsync(token);
+                    App.Current.Properties["UserDetails"] = JsonConvert.SerializeObject(CurrentUser);
+                    App.CurrentUser = CurrentUser;
+                }
+                return responce.IsSuccessStatusCode;
             }
-            return responce.IsSuccessStatusCode;
         }
 
         public async Task<User> GetUserAsync(string token)
@@ -81,29 +85,38 @@ namespace PizzeriaApp.Services
 
         public async Task<bool> UpdateAsync(RegisterViewModel currentUser)
         {
-            var httpClient = new HttpClient();
-            using (var requestMessage =
-            new HttpRequestMessage(HttpMethod.Post, Url + "update"))
+            try
             {
-                requestMessage.Headers.Authorization =
-                    new AuthenticationHeaderValue("Bearer", App.Token);
-                
-                var json = JsonConvert.SerializeObject(currentUser);
-                HttpContent httpContent = new StringContent(json);
-                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-               
-                requestMessage.Content = httpContent;
-                var responce = await httpClient.SendAsync(requestMessage);
-                responce.EnsureSuccessStatusCode();
-                
-                var strContent = await responce.Content.ReadAsStringAsync();
-                var user = JsonConvert.DeserializeObject<User>(strContent);
+                var httpClient = new HttpClient();
+                using (var requestMessage =
+                new HttpRequestMessage(HttpMethod.Post, Url + "update"))
+                {
+                    requestMessage.Headers.Authorization =
+                        new AuthenticationHeaderValue("Bearer", App.Token);
 
-                App.Current.Properties["UserDetails"] = JsonConvert.SerializeObject(user);
-                App.CurrentUser = user;
+                    var json = JsonConvert.SerializeObject(currentUser);
+                    HttpContent httpContent = new StringContent(json);
+                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                return responce.IsSuccessStatusCode;
+                    requestMessage.Content = httpContent;
+                    var responce = await httpClient.SendAsync(requestMessage);
+                    responce.EnsureSuccessStatusCode();
+
+                    var strContent = await responce.Content.ReadAsStringAsync();
+                    var user = JsonConvert.DeserializeObject<User>(strContent);
+
+                    App.Current.Properties["UserDetails"] = JsonConvert.SerializeObject(user);
+                    App.CurrentUser = user;
+
+                    return responce.IsSuccessStatusCode;
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
     }
 }

@@ -12,7 +12,9 @@ using Xamarin.Forms.PlatformConfiguration;
 namespace PizzeriaApp.ViewModel
 {
     public class ProductViewModel : BaseProductViewModel
-    {   
+    {
+        private readonly DataBase dataBase;
+        
         public Command LoadProductsCommand { get;}
         public Command ProductTapEdit { get;}
         public Command ProductTapDelete { get;}
@@ -80,7 +82,7 @@ namespace PizzeriaApp.ViewModel
             await App.DataBase.DeleteProductAsync(product.Id);
             await ExecuteLoadProductsCommand();
         }
-
+        
         private async Task ExecuteLoadProductsCommand()
         {
 
@@ -103,6 +105,8 @@ namespace PizzeriaApp.ViewModel
             {
                 IsBusy = false;
             }
+            
+
         }
 
         public void OnAppearing()

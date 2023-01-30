@@ -19,6 +19,12 @@
             <Label Text="Ціна" FontSize="Medium" IsEnabled="False"></Label>
             <Editor Keyboard="Numeric" Text="{Binding Product.Price, Mode=TwoWay }" FontSize="Medium" AutoSize="TextChanges" ></Editor>
 
+<<<<<<< HEAD
+=======
+            <!--<Button Text="Оберіть фото" Clicked="Button_AddPhoto_Clicked"></Button>
+            <Image x:Name="imgFile"  WidthRequest="100" HeightRequest="100"></Image>
+            <Label x:Name="fileName" Text="{Binding Product.ImageUrl, Mode=TwoWay}" FontSize="Large" HorizontalOptions="Center" FontAttributes="Bold"></Label>-->
+>>>>>>> 9b0d7ac0fde05132254ad8940dedee9afd1a46a6
             <Label Text="Посилання на фото" FontSize="Medium" IsEnabled="False"></Label>
             <Entry Text="{Binding Product.ImageUrl, Mode=TwoWay}" FontSize="Medium"></Entry>
 

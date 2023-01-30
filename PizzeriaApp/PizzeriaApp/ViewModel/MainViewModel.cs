@@ -29,7 +29,11 @@ namespace PizzeriaApp.ViewModel
         {
             return new List<Product>()
             {
+<<<<<<< HEAD
                 new Product(){ImageUrl="pepperoni", Description="Lorem ipsun",Name="Пепероні" },
+=======
+                new Product(){ImageUrl="https://goodsushi.if.ua/image/cache/webp/catalog/photo/%D0%9F%D1%96%D1%86%D0%B0/%D0%A1%D0%B0%D0%BB%D1%8F%D0%BC%D1%96%D0%BD%D0%BE_Site-700x700.webp", Description="desc",Name="Саляміно" },
+>>>>>>> 9b0d7ac0fde05132254ad8940dedee9afd1a46a6
                  new Product(){ImageUrl="https://goodsushi.if.ua/image/cache/webp/catalog/photo/%D0%9F%D1%96%D1%86%D0%B0/%D0%A1%D0%B0%D0%BB%D1%8F%D0%BC%D1%96%D0%BD%D0%BE_Site-700x700.webp", Description="Опис",Name="Салямі" },
             };
         }

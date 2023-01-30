@@ -28,8 +28,11 @@
     <EmbeddedResource Update="AddProductPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Update="CartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+=======
+>>>>>>> 9b0d7ac0fde05132254ad8940dedee9afd1a46a6
   </ItemGroup>
 </Project>

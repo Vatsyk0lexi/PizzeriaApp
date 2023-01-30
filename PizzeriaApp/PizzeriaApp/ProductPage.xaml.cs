@@ -20,11 +20,18 @@ namespace PizzeriaApp
         {
             InitializeComponent();
             BindingContext = productViewModel = new ProductViewModel(Navigation);
+<<<<<<< HEAD
             ImageMainButton.Clicked += ImageMainButton_Clicked;
         }
       
 
         
+=======
+
+            ImageMainButton.Clicked += ImageMainButton_Clicked;
+        }
+
+>>>>>>> 9b0d7ac0fde05132254ad8940dedee9afd1a46a6
         private async void ImageMainButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new TabbedPage1());
@@ -34,10 +41,14 @@ namespace PizzeriaApp
         {
             await Navigation.PushAsync(new AddProductPage());
         }
+<<<<<<< HEAD
         private async void GoToBasketPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CartPage());
         }
+=======
+
+>>>>>>> 9b0d7ac0fde05132254ad8940dedee9afd1a46a6
         protected override void OnAppearing()
         {
             base.OnAppearing();

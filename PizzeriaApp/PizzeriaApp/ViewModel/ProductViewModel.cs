@@ -1,4 +1,5 @@
-﻿using PizzeriaApp.Services;
+﻿using Newtonsoft.Json;
+using PizzeriaApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,12 +35,14 @@ namespace PizzeriaApp.ViewModel
         public ProductViewModel(INavigation navigation)
         {
             ProductList = new List<Product>();
-            LoadProductsCommand = new Command(async() => await ExecuteLoadProductsCommand());
+            LoadProductsCommand = new Command(async () => await ExecuteLoadProductsCommand());
             Products = new ObservableCollection<Product>();
             ProductTapEdit = new Command<Product>(OnEditProduct);
             ProductTapDelete = new Command<Product>(OnDeleteProduct);
             Navigation = navigation;
-            NavigateToBasketCommand = new Command(async()=> await Navigation.PushAsync(new CartPage()));
+            NavigateToBasketCommand = new Command(async () => {
+                await Navigation.PushAsync(new CartPage(JsonConvert.SerializeObject(App.CartProducts)));
+            });
             AddProductToBasket = new Command<Product>(OnAddProductToBasket);
         }
 
@@ -49,8 +52,13 @@ namespace PizzeriaApp.ViewModel
             {
                 return;
             }
-            
-            App.Products.Add(product);
+            var cartItem = new CartItem
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Quantity = 1
+            };
+            App.CartProducts.Add(cartItem);
             AddToBasketCounter();
         }
 

@@ -4,6 +4,7 @@ using PizzeriaApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace PizzeriaApp
 {
     public partial class App : Application
     {
-        public static List<Product> Products { get; set; } = new List<Product>();
+        public static List<CartItem> CartProducts { get; set; } = new List<CartItem>();
         private static DataBase _dataBase;
         public static DataBase DataBase
         {
@@ -24,7 +25,7 @@ namespace PizzeriaApp
                 return _dataBase;
             }
         }
-        public static User CurrentUser { get; set; }
+        public static User CurrentUser { get; set; } = new User() { Email = string.Empty, Username = string.Empty, NumberPhone = string.Empty };
 
         public static string Token { get; set; } = string.Empty;
         public App()
@@ -33,10 +34,11 @@ namespace PizzeriaApp
             InitializeComponent();
             Device.SetFlags(new[] { "Shapes_Experimental", "Brush_Experimental" });
             bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
+            
             if (!isLoggedIn)
             {
 
-                MainPage = new NavigationPage(new LoginPage());
+                MainPage = new NavigationPage(new LoginPage());//LoginPage
             }
             else
             {

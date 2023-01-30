@@ -19,11 +19,11 @@ namespace PizzeriaApp
             InitializeComponent();
             BindingContext = cartViewModel = new CartViewModel();
         }
-        public CartPage (List<Product> products)
-		{
-			InitializeComponent ();
-            BindingContext = cartViewModel = new CartViewModel(Navigation,products);
-		}
+        public CartPage(string products)
+        {
+            InitializeComponent();
+            BindingContext = cartViewModel = new CartViewModel(Navigation, products);
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

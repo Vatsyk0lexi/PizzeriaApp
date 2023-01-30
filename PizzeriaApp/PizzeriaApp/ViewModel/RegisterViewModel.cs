@@ -58,9 +58,16 @@ namespace PizzeriaApp.ViewModel
                     bool isSuccess = await _ApiService.LoginAsync(Email, Password);
                     if (isSuccess)
                     {
+                        try
+                        {
+                            await navigation.PushAsync(new TabbedPage1());
+                        }
+                        catch (Exception)
+                        {
+
+                            await navigation.PushAsync(new MainPage());
+                        }
                         
-                        var tab = new TabbedPage1();
-                        await navigation.PushAsync(tab);
                     }
                     else
                     {

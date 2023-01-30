@@ -18,10 +18,10 @@ namespace PizzeriaApp
         public UserPage()
         {
             InitializeComponent();
-            UserName.Text = App.CurrentUser.Username;
-            Password.Text = App.CurrentUser.Username;
-            Email.Text = App.CurrentUser.Email;
-            NumberPhone.Text = App.CurrentUser.NumberPhone;
+            UserName.Text = App.CurrentUser?.Username;
+            Password.Text = App.CurrentUser?.Username;
+            Email.Text = App.CurrentUser?.Email;
+            NumberPhone.Text = App.CurrentUser?.NumberPhone;
             SaveButton.Clicked += SaveButton_Clicked;
             LogOut.Clicked += LogOut_Clicked;
         }

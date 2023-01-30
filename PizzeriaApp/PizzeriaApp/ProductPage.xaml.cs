@@ -20,10 +20,11 @@ namespace PizzeriaApp
         {
             InitializeComponent();
             BindingContext = productViewModel = new ProductViewModel(Navigation);
-            
             ImageMainButton.Clicked += ImageMainButton_Clicked;
         }
+      
 
+        
         private async void ImageMainButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new TabbedPage1());

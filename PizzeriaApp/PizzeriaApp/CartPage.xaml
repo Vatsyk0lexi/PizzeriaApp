@@ -4,9 +4,9 @@
              xmlns:vm="clr-namespace:PizzeriaApp.ViewModel"
              x:Class="PizzeriaApp.CartPage">
 
-    <!--<ContentPage.BindingContext>
+    <ContentPage.BindingContext>
         <vm:CartViewModel></vm:CartViewModel>
-    </ContentPage.BindingContext>-->
+    </ContentPage.BindingContext>
     <Grid>
         <Button Text="Замовити" HorizontalOptions="CenterAndExpand" WidthRequest="1000" 
                 BackgroundColor="Green" TextColor="White" FontSize="18" VerticalOptions="End"></Button>
@@ -41,15 +41,18 @@
                             <StackLayout Grid.Column="3" VerticalOptions="Center"
                                          Orientation="Vertical"
                                          Margin="40,0,0,0">
-                                 <Button Text="-"
-                                        Command="{Binding DecreaseQuantityCommand}"
+                                 <Button Text=""
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CartViewModel}}, 
+                                            Path=DecreaseQuantityCommand}"
                                         VerticalOptions="Center"
                                         WidthRequest="40"/>
-                                  <Label Text="{Binding Quantity}"
+                                <Label Text="{Binding Source={RelativeSource AncestorType={x:Type vm:CartViewModel}}, 
+                                            Path=Quantity}"
                                        TextColor="{StaticResource BlackColor}"
                                        VerticalTextAlignment="Center" HorizontalOptions="Center"/>
                                   <Button Text="+"
-                                        Command="{Binding IncreaseQuantityCommand }"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CartViewModel}}, 
+                                            Path=IncreaseQuantityCommand}"
                                         VerticalOptions="Center"
                                         WidthRequest="40"/> 
                             </StackLayout>

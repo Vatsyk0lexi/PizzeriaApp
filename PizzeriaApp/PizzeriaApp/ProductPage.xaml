@@ -28,11 +28,11 @@
                     <Label Text="Головна" TextColor="Black" FontSize="20" FontAttributes="Bold" VerticalOptions="Start"/>
                 </StackLayout>
                 <StackLayout VerticalOptions="End" HorizontalOptions="Start">
-                    <Button  WidthRequest="80" HeightRequest="40" Text="До корзини"
+                    <!--<Button  WidthRequest="80" HeightRequest="40" Text="До корзини"
                              BackgroundColor="Bisque" Margin="0,0,0,0" Command="{Binding NavigateToBasketCommand}">
-                        </Button>
-                    <Button  WidthRequest="80" HeightRequest="40" Text="Додати"
-                             BackgroundColor="Bisque" Margin="10,0,0,20" Clicked="AddProductButton_Clicked">
+                    </Button>-->
+                    <Button  WidthRequest="100" HeightRequest="50" Text="Додати"
+                             BackgroundColor="Bisque" Margin="0,0,0,20" Clicked="AddProductButton_Clicked">
                     </Button>
                 </StackLayout>
                 
@@ -41,18 +41,18 @@
                         <Image 
                              WidthRequest="40" HeightRequest="40" Source="shoppingCart"
                              BackgroundColor="Transparent" >
-                        <!--<Image.GestureRecognizers>
+                        <Image.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProductViewModel}}, 
                                             Path=NavigateToBasketCommand}">
 
                             </TapGestureRecognizer>
-                        </Image.GestureRecognizers>-->
+                        </Image.GestureRecognizers>
                         </Image>
                     </Frame>
                 <Frame HorizontalOptions="End" VerticalOptions="Start" CornerRadius="50" Padding="5"
-                           WidthRequest="20" HeightRequest="20" Margin="0,55,45,0" BorderColor="Black" BackgroundColor="Red" >
-                    <Label Text="{Binding Counter}" TextColor="White"  FontAttributes="Bold"
-                               HorizontalOptions="Center" VerticalOptions="Center">
+                           WidthRequest="20" HeightRequest="20" Margin="0,55,50,0" BorderColor="Black" BackgroundColor="Red" >
+                    <Label Text="{Binding Counter}" TextColor="White" FontSize="10" 
+                               HorizontalTextAlignment="Center"  VerticalTextAlignment="Center">
 
                     </Label>
                 </Frame>
@@ -95,7 +95,7 @@
 
                                         </Image.GestureRecognizers>
                                     </Image>
-                                </StackLayout>
+                                </StackLayout> 
                                 <StackLayout  Grid.Row="2" Padding="20" Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
                                     <Image  WidthRequest="50" HeightRequest="50" Source="buy.png" HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
                                         <Image.GestureRecognizers>

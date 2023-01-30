@@ -41,7 +41,7 @@
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label  Text="Ім'я користувача" Background="white" TextColor="black"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" ></Label>
-                        <Entry  x:Name="UserName" TextColor="White"  HorizontalOptions="StartAndExpand" Margin="20,0,0,0" VerticalOptions="CenterAndExpand" ></Entry>
+                        <Entry  x:Name="UserName" TextColor="White"  HorizontalOptions="FillAndExpand" Margin="20,0,0,0" VerticalOptions="CenterAndExpand" ></Entry>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label  Text="Пароль" Background="white" TextColor="black" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Label>
@@ -53,7 +53,7 @@
                     </StackLayout>
 
                     <Button  Text="Зберегти" x:Name="SaveButton"  TextColor="Black" BackgroundColor="White" CornerRadius="20"></Button>
-                    <Button  Text="Вийти з акаунту" x:Name="LogOut" HorizontalOptions="CenterAndExpand" WidthRequest="150" HeightRequest="50" TextColor="OrangeRed" BackgroundColor="White" CornerRadius="20"></Button>
+                    <Button  Text="Вийти з акаунту" x:Name="LogOut" HorizontalOptions="CenterAndExpand" WidthRequest="170" HeightRequest="70"  TextColor="OrangeRed" BackgroundColor="White" CornerRadius="20"></Button>
                 </StackLayout>
 
             </Grid>
